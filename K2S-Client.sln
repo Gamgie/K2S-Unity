@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2S-Client.CSharp", "K2S-Client.CSharp.csproj", "{6A43C1DF-6AC3-D512-25F9-3BDA99E2ED6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2S-Client.CSharp.Editor", "K2S-Client.CSharp.Editor.csproj", "{C34E6E15-262D-0517-AA0F-FF7FAEA91D2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A43C1DF-6AC3-D512-25F9-3BDA99E2ED6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A43C1DF-6AC3-D512-25F9-3BDA99E2ED6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A43C1DF-6AC3-D512-25F9-3BDA99E2ED6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A43C1DF-6AC3-D512-25F9-3BDA99E2ED6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34E6E15-262D-0517-AA0F-FF7FAEA91D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34E6E15-262D-0517-AA0F-FF7FAEA91D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34E6E15-262D-0517-AA0F-FF7FAEA91D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34E6E15-262D-0517-AA0F-FF7FAEA91D2E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
