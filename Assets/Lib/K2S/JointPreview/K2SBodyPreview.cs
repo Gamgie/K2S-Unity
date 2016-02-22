@@ -6,6 +6,7 @@ public class K2SBodyPreview : MonoBehaviour
 {
 
     public int targetOrderedID;
+    public float jointScaleFactor;
     private K2SBody _body;
 
     public K2SJointPreview jointPrefab;
@@ -16,7 +17,6 @@ public class K2SBodyPreview : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //Debug.Log(jointCount + " joints");
         joints = new List<K2SJointPreview>();
 
         for (int i = 0; i < K2SBody.NUM_JOINTS; i++)
@@ -25,6 +25,8 @@ public class K2SBodyPreview : MonoBehaviour
             joints.Add(j);
             j.transform.parent = transform;
             j.jointType = (K2SJoint.JointType)i;
+            j.transform.localScale = new Vector3(jointScaleFactor, jointScaleFactor, jointScaleFactor);
+            j.name = j.jointType.ToString();
         }
 
         tm = GetComponentInChildren<TextMesh>();
@@ -50,6 +52,11 @@ public class K2SBodyPreview : MonoBehaviour
     {
         tm.transform.localPosition = body.getPosition();
         tm.text = "ID :" + body.bodyId + "\nAge :" + body.age;
+
+        foreach(K2SJointPreview j in joints)
+        {
+            j.transform.localScale = new Vector3(jointScaleFactor, jointScaleFactor, jointScaleFactor);
+        }
     }
 
     // Update is called once per frame
