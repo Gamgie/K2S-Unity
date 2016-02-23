@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetOrderedID: 0
-  jointScaleFactor: 1
+  jointScaleFactor: 0.2
   jointPrefab: {fileID: 11431788, guid: 575ee1638cb186c4eb8c1b0087371ba1, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -125,7 +125,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: jointScaleFactor
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 150834}

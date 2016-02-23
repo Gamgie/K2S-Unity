@@ -15,7 +15,7 @@ public class K2SBodyPreview : MonoBehaviour
     TextMesh tm;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         joints = new List<K2SJointPreview>();
 
@@ -44,7 +44,8 @@ public class K2SBodyPreview : MonoBehaviour
     {
         if (body.bodyId == bodyID)
         {
-            body = K2SClient.getOldestBody();
+            //body = K2SClient.getOldestBody();
+            Destroy(this.gameObject);
         }
     }
 

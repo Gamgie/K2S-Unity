@@ -5,11 +5,12 @@ using UnityOSC;
 
 public class K2SClient : MonoBehaviour {
 
-    OSCServer server;
+    
     public int port = 9090;
 
     public int scaleFactor = 1;
     public Vector3 originOffset;
+    public K2SBodyPreview bodyPrefab;
 
     public static bool primaryJointsSelected;
     public static bool secondaryJointsSelected;
@@ -27,21 +28,23 @@ public class K2SClient : MonoBehaviour {
     public static event BodyLeftHandler bodyLeft;
     #endregion
 
+    OSCServer _server;
+
     // Use this for initialization
     void Start () {
-        server = new OSCServer(port);
-        server.PacketReceivedEvent += packetReceived;
-        server.Connect();
+        _server = new OSCServer(port);
+        _server.PacketReceivedEvent += packetReceived;
+        _server.Connect();
 
         bodies = new Dictionary<int, K2SBody>();
         orderedBodies = new List<K2SBody>();
 
-        Debug.Log("Listening on port " + port);
+        Debug.Log("K2SClient : Listening on port " + port);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        server.Update();
+        _server.Update();
 	}
 
     void packetReceived(OSCPacket packet)
@@ -53,7 +56,7 @@ public class K2SClient : MonoBehaviour {
         {
 
             case "/k2s/body/entered":
-                Debug.Log("body entered");
+                Debug.Log("body entered : "+ (int)msg.Data[0]);
                 addBody((int)msg.Data[0]);
                 break;
 
@@ -77,7 +80,6 @@ public class K2SClient : MonoBehaviour {
                 break;
 
             case "/k2s/body/update":
-                Debug.Log("body update");
                 bodyID = (int)msg.Data[0];
                 if (!bodies.ContainsKey(bodyID)) addBody(bodyID);
 
@@ -111,13 +113,17 @@ public class K2SClient : MonoBehaviour {
 
     void OnDestroy()
     {
-        server.Close();
+        _server.Close();
     }
 
     void addBody(int bodyID)
     {
         bodies.Add(bodyID, new K2SBody(bodyID));
         orderedBodies.Add(bodies[bodyID]);
+
+        GameObject go = Instantiate(bodyPrefab.gameObject) as GameObject;
+        go.name = "Body Index " + bodyID;
+
         if (bodyEntered != null) bodyEntered(bodies[bodyID]);
     }
 
