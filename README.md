@@ -1,4 +1,2 @@
 # K2S-Unity
-K2S Client for Unity
-
-Zob.
+K2S (Kinect To Stream) Client for Unity
